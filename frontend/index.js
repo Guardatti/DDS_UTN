@@ -1,7 +1,8 @@
 
 const button = document.getElementById('btnCargarLibros')
 const listaLibros = document.getElementById('listaLibros')
-
+const buttonForm = document.getElementById('btnForm')
+const buttonCrearLibro = document.getElementById('btnGuardar')
 
 const obtenerLibros = async () => {
 
@@ -24,6 +25,44 @@ const eliminarLibro = async (id) => {
     await fetch(url, {
         method: 'DELETE',
     })
+
+}
+
+const modificarLibro = async (id, nuevoAutor) => {
+
+    const url = `http://localhost:3000/api/libros/${id}`;
+        
+    await fetch(url, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ autor: nuevoAutor })
+    });
+
+}
+
+const mostrarFormulario = () => {
+
+    document.getElementById('formulario').style.display = 'block';
+
+}
+
+const crearLibro = async () => {
+
+    const titulo = document.getElementById("titulo").value;
+    const autor = document.getElementById("autor").value;
+    const anio = parseInt(document.getElementById("anio").value);
+
+    const nuevoLibro = {titulo, autor, anio}
+
+    const url = `http://localhost:3000/api/libros/`
+
+    await fetch(url, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(nuevoLibro)
+    })
+
+    document.getElementById('formulario').style.display = 'none';
 
 }
 
@@ -76,22 +115,12 @@ const mostrarLibros = async () => {
         });
 
         document.querySelectorAll('.btn-modificar').forEach(btn => {
-            btn.addEventListener('click', async (e) => {
+            btn.addEventListener('click', (e) => {
                 const id = e.target.getAttribute('data-id');
                 const nuevoAutor = prompt('Ingrese el nuevo autor del libro:');
-        
-                if (nuevoAutor) {
-                    const url = `http://localhost:3000/api/libros/${id}`;
-                    
-                    await fetch(url, {
-                        method: 'PATCH',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({ autor: nuevoAutor })
-                    });
-
-                }
-            });
-        });
+                modificarLibro(id, nuevoAutor)
+            })
+        })
 
     }
 }
@@ -102,6 +131,10 @@ const mostrarLibros = async () => {
 const main = () => {
 
     button.addEventListener('click', mostrarLibros)
+
+    buttonForm.addEventListener('click', mostrarFormulario)
+
+    buttonCrearLibro.addEventListener('click', crearLibro)
 
 }
 
