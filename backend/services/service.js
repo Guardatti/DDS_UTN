@@ -1,0 +1,46 @@
+import { Libros } from "../models/libros.js"
+
+
+export const crearLibro = async (req, res) => {
+
+    const data = req.body;
+
+    const libroNuevo = Libros.create(data);
+
+    res.json(libroNuevo);
+
+}
+
+export const mostrarLibros = async (req, res) => {
+
+    const data = await Libros.findAll();
+
+    res.json(data)
+
+}
+
+export const mostrarLibrosFiltrados = async (req, res) => {
+
+    const search = req.query.search;
+
+    const data = await Libros.findAll({
+        where: {
+            titulo: search
+        }
+    });
+
+    res.json(data)
+
+}
+
+export const elimiarLibro = async (req, res) => {
+
+    const id = req.params.id;
+
+    const data = await Libros.findByPk(id);
+
+    if (data) {
+        await data.destroy();
+    }
+
+}
