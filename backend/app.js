@@ -1,7 +1,7 @@
 import express from "express";
 import { sequelize } from "./database/database.js";
 import cors from "cors";
-import { crearLibro, elimiarLibro, mostrarLibros, mostrarLibrosFiltrados } from "./services/service.js";
+import { crearLibro, elimiarLibro, modificarLibro, mostrarLibros, mostrarLibrosFiltrados } from "./services/service.js";
 
 // express
 const app = express();
@@ -24,6 +24,8 @@ app.get('/api/libros/', mostrarLibros)
 app.get('/api/libros/libros/', mostrarLibrosFiltrados)
 
 app.delete('/api/libros/:id', elimiarLibro)
+
+app.patch('/api/libros/:id', modificarLibro)
 
 app.listen(3000, () => {
 

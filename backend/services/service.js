@@ -44,3 +44,21 @@ export const elimiarLibro = async (req, res) => {
     }
 
 }
+
+export const modificarLibro = async (req, res) => {
+
+    const datosLibro = req.body;
+
+    const id = req.params.id;
+
+    const libro = await Libros.findByPk(id);
+
+    if (libro) {
+
+        libro.autor = datosLibro.autor
+
+        await libro.save();
+
+    }
+
+}

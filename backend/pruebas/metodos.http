@@ -25,3 +25,10 @@ DELETE http://localhost:3000/api/libros/1
 Content-Type: application/json
 
 ###
+
+PATCH HTTP://localhost:3000/api/libros/10
+Content-Type: application/json
+
+{
+    "autor": "Osvaldeado"
+}
