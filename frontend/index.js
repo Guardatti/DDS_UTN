@@ -75,8 +75,25 @@ const mostrarLibros = async () => {
             });
         });
 
-    }
+        document.querySelectorAll('.btn-modificar').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                const id = e.target.getAttribute('data-id');
+                const nuevoAutor = prompt('Ingrese el nuevo autor del libro:');
+        
+                if (nuevoAutor) {
+                    const url = `http://localhost:3000/api/libros/${id}`;
+                    
+                    await fetch(url, {
+                        method: 'PATCH',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ autor: nuevoAutor })
+                    });
 
+                }
+            });
+        });
+
+    }
 }
 
 
