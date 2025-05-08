@@ -1,0 +1,52 @@
+[
+    {
+        "titulo": "Cien años de soledad",
+        "autor": "Gabriel García Márquez",
+        "anio": 1967
+    },
+    {
+        "titulo": "1984",
+        "autor": "George Orwell",
+        "anio": 1949
+    },
+    {
+        "titulo": "El principito",
+        "autor": "Antoine de Saint-Exupéry",
+        "anio": 1943
+    },
+    {
+        "titulo": "Fahrenheit 451",
+        "autor": "Ray Bradbury",
+        "anio": 1953
+    },
+    {
+        "titulo": "Don Quijote de la Mancha",
+        "autor": "Miguel de Cervantes",
+        "anio": 1605
+    },
+    {
+        "titulo": "Orgullo y prejuicio",
+        "autor": "Jane Austen",
+        "anio": 1813
+    },
+    {
+        "titulo": "Crónica de una muerte anunciada",
+        "autor": "Gabriel García Márquez",
+        "anio": 1981
+    },
+    {
+        "titulo": "La sombra del viento",
+        "autor": "Carlos Ruiz Zafón",
+        "anio": 2001
+    },
+    {
+        "titulo": "Rayuela",
+        "autor": "Julio Cortázar",
+        "anio": 1963
+    },
+    {
+        "titulo": "Los juegos del hambre",
+        "autor": "Suzanne Collins",
+        "anio": 2008
+    }
+]  

@@ -1,3 +1,4 @@
+import { Op } from "sequelize";
 import { Libros } from "../models/libros.js"
 
 
@@ -5,7 +6,7 @@ export const crearLibro = async (req, res) => {
 
     const data = req.body;
 
-    const libroNuevo = Libros.create(data);
+    const libroNuevo = await Libros.create(data);
 
     res.json(libroNuevo);
 
@@ -13,23 +14,27 @@ export const crearLibro = async (req, res) => {
 
 export const mostrarLibros = async (req, res) => {
 
-    const data = await Libros.findAll();
+    const search = req.query.search
 
-    res.json(data)
+    if (search) {
 
-}
+        const data = await Libros.findAll({
+            where: {
+                titulo: {
+                    [Op.like]: `%${search}%`
+                }
+            }
+        })
+    
+        res.json(data);
 
-export const mostrarLibrosFiltrados = async (req, res) => {
+    } else {
 
-    const search = req.query.search;
+        const data = await Libros.findAll()
 
-    const data = await Libros.findAll({
-        where: {
-            titulo: search
-        }
-    });
+        res.json(data)
 
-    res.json(data)
+    }
 
 }
 

@@ -1,32 +1,26 @@
 ###
-
 POST http://localhost:3000/api/libros/
 Content-Type: application/json
 
 {
-    "titulo": "Cien años de soledad",
+    "titulo": "Rayuela",
     "autor": "Gabriel García Márquez",
     "anio": 1967
 }
 
 
 ###
-
 GET http://localhost:3000/api/libros/
 Content-Type: application/json
 
 ###
-
-GET http://localhost:3000/api/libros/libros?search=Rayuela
-Content-Type: application/json
+GET http://localhost:3000/api/libros?search=Cien años de soledad
 
 ### 
-
 DELETE http://localhost:3000/api/libros/1
 Content-Type: application/json
 
 ###
-
 PATCH HTTP://localhost:3000/api/libros/10
 Content-Type: application/json
 
